@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<!--Celestin L. MASSON
+    Introduction to Programming
+    Project 2 - Game v0.2 - 10/02/2014 -->
+   <head>
+      <title>
+         The chase for the bathtub 
+      </title>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+      <style>
+        h1 {font-family: "Britannic Bold";}
+      </style>
+      <script type="text/javascript">
+         // global variables
+         var currentloc=0;
+         var locvisited0 = true;
+         var locvisited1 = false;
+         var locvisited2 = false;
+         var locvisited3 = false;
+         var locvisited4 = false;
+         var locvisited5 = false;
+         var neverbeenzero=false;
+         var score=0;
+         var neverbeenone=false;
+         var neverbeentwo=false;
+         var neverbeenthree=false;
+         
+     
+          
+         function displaymsg(message) {
+          var target = document.getElementById("tamain");
+          target.value = message + target.value;
+          }
+         
+     
+         function btnNorth() {
+           if (currentloc===1) {
+            currentloc=0;
+            displaymsg("You are in the bathroom \n\n");
+            updateScore();
+           } 
+           else if (currentloc===3) {
+             currentloc=4;
+             displaymsg("You found Leo! Now it can take its bath. \n\nCongratulations!\n\n");
+             updateScore();
+            }
+           else if (currentloc===5){
+              currentloc=1;
+              displaymsg("You are back in the bedroom \n\n");
+              udpateScore();
+            }
+           else {
+            displaymsg("You cannot go north! \n\n");
+            }
+          }
+            
+
+         function btnSouth() {
+          if (currentloc===0) {
+           currentloc=1;
+           displaymsg("You are now in the bedroom \n\n");
+           updateScore();         
+           } else if (currentloc===4) {
+             currentloc=3;
+             displaymsg("Oh no! You went back to the kitchen \n\n");
+             updateScore();
+            }
+             else if (currentloc===1) {
+             currentloc=5;
+             displaymsg("You are now at the Veranda! \n\n");
+             updateScore();
+             }
+            else {
+            displaymsg("You cannot go South from here! \n\n");}
+          }
+
+               
+         function btnWest() {
+          if (currentloc===2) {
+           currentloc=3;
+           displaymsg("You are in the kitchen. There is still pizza from yesterday night... \n\n");
+           updateScore();
+           }
+           else if(currentloc===1) {
+            currentloc=2;
+            displaymsg("You are now in the Dining Room. \n\n");
+            udpateScore();
+           }
+            else {
+            displaymsg("You cannot go West! \n\n");
+            }
+           }
+           
+         function btnEast() {
+          if (currentloc===2) {
+           currentloc=1;
+           displaymsg("You are back in the bedroom \n\n");
+           updateScore();
+           } 
+           else if (currentloc===3) {
+            currentloc=2;
+            displaymsg("You are back in the Dining Room. \n\n");
+           }
+           else {
+             displaymsg("You cannot go East! \n\n");
+             } 
+          }
+          
+          function updateScore() {
+          var txtpoints = document.getElementById("txt_Points");
+          switch (currentloc) {
+            case 0:
+              if(locvisited0 === false) {
+              locvisited0 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 1:
+              if(locvisited1 === false) {
+              locvisited1 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 2:
+              if(locvisited2 === false) {
+              locvisited2 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 3:
+              if(locvisited3 === false) {
+              locvisited3 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 4:
+              if(locvisited4 === false) {
+              locvisited4 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 5:
+              if(locvisited5 === false) {
+              locvisited5 = true;
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+          }
+          }
+           
+           function btn_Enterclick() {
+             var vCommand = document.getElementById("txt_Command");
+             if (vCommand.value != "") {
+                if (vCommand.value === "N" || vCommand.value === "n") {
+                  btnNorth();
+                }
+                else if (vCommand.value === "S" || vCommand.value === "s") {
+                  btnSouth();
+                }
+                else if (vCommand.value === "W" || vCommand.value === "w") {
+                  btnWest();
+                }
+                else if (vCommand.value === "E" || vCommand.value === "e") {
+                  btnEast();
+                 }
+                else {
+                  displaymsg("Please enter a valid command! \n\n");
+                }
+              }
+             else {
+                displaymsg("Please enter a command! \n\n");
+             }
+             vCommand.value = "";
+             }
+           
+
+           
+      </script>
+   </head>
+   <body>
+       <h1> The Chase For The Bathtub</h1>
+       <br>
+       
+       <textarea rows="10" cols="40" id="tamain" >Find Leo your cat in the living room! You are in the bathroom.</textarea>
+      
+       <br>
+              
+       <input type="button"
+              id = "North"
+              value="North"
+              onclick="btnNorth();" >
+              
+       
+        
+       <input type="button"
+              value="South"
+              onclick="btnSouth();" >
+                    
+           
+              
+       <input type="button"
+              value="West"
+              onclick="btnWest();" >
+              
+       <input type="button"
+              value="East"
+              onclick="btnEast();" >       
+              
+       <br>
+       <br>
+       
+       <input type="text"
+               id="txt_Command"
+               value=""
+               name="txt_Command" >
+               
+       <input type="button"
+              id="Enter"
+              value="Enter"
+              onclick="btn_Enterclick();" >
+       
+       <br>
+       Points:
+       <input type="text"
+              id="txt_Points"
+              name="txt_Points"
+              value="">
+       <br>      
+       <iframe src="https://onedrive.live.com/embed?cid=C85828EDBE558A94&resid=C85828EDBE558A94%21189&authkey=AB6HJUzBU0x-S3w" width="309" height="320" frameborder="0" scrolling="no"></iframe>
+       
+       <br> 
+       Contact me at:
+       <i><a href="mailto:Celestin.Masson1@marist.edu"> Celestin.Masson1@marist.edu </a></i>
+       if you have any problems.
+       <br>
+
+   </body>
+</html>
