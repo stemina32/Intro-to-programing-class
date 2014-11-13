@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<!--Celestin L. MASSON
+    Introduction to Programming
+    Project 4 - Game v0.4 - 11/12/2014 -->
+   <head>
+      <title>
+         The chase for the bathtub 
+      </title>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+      <style>
+        h1 {font-family: "Britannic Bold";}
+      </style>
+      <script type="text/javascript">
+         // global variables
+         var currentloc=0;
+         var locvisited0 = 1;
+         var locvisited1 = 0;
+         var locvisited2 = 0;
+         var locvisited3 = 0;
+         var locvisited4 = 0;
+         var locvisited5 = 0;
+         var locvisited6 = 0;
+         var locvisited7 = 0;
+         var locvisited8 = 0;
+         var locvisited9 = 0;
+         var score=0;
+         var lighter_name = "Lighter";
+         var lighter_qty = 0;
+         var duck_name = "Yellow Rubber Duck";
+         var duck_qty = 0;
+		     var pizza_name = "Pepperoni Pizza";
+		     var pizza_qty = 0;
+
+         function init() {
+          loc_msg();
+          displaymsg("Find Leo your cat in the living room! You are in the bathroom.");
+         }
+         
+         function displaymsg(message) {
+          var target = document.getElementById("tamain");
+          target.value = message + "\n\n" + target.value;   
+         }
+         
+         function locationvisited() {
+			    switch (currentloc) {
+				case 0:
+					locvisited0++;
+					break;
+				case 1:
+					locvisited1++;
+					break;
+				case 2:
+					locvisited2++;
+					break;
+				case 3:
+					locvisited3++;
+					break;
+				case 4:
+					locvisited4++;
+					break;
+				case 5:
+					locvisited5++;
+					break;
+				case 6:
+					locvisited6++;
+					break;
+				case 7:
+					locvisited7++;
+					break;
+				case 8:
+					locvisited8++;
+					break;
+				case 9:
+					locvisited9++;
+					break;
+				default:
+			}
+		 }
+		 
+		 function updateScore() {
+          var txtpoints = document.getElementById("txt_Points");
+		  switch (currentloc) {
+            case 0:
+              if(locvisited0 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 1:
+              if(locvisited1 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 2:
+              if(locvisited2 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 3:
+              if(locvisited3 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 4:
+              if(locvisited4 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 5:
+              if(locvisited5 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+              break;
+            case 6:
+              if(locvisited6 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+			  break;
+             case 7:
+              if(locvisited7 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+			  break;
+             case 8:
+              if(locvisited8 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+			  break;
+             case 9:
+              if(locvisited9 === 0) {
+              score += 5;
+              txtpoints.value = score;
+              }
+			  break;
+           }
+          }
+                               
+         
+         function help(){
+			displaymsg("Commands: \n N \n S \n E \n W \n take \n HELP")
+         }
+          
+
+           function btn_Enterclick() {
+             var vCommand = document.getElementById("txt_Command");
+             if (vCommand.value != "") {
+                if (vCommand.value === "N" || vCommand.value === "n") {
+                  btnNorth();
+                }
+                else if (vCommand.value === "S" || vCommand.value === "s") {
+                  btnSouth();
+                }
+                else if (vCommand.value === "W" || vCommand.value === "w") {
+                  btnWest();
+                }
+                else if (vCommand.value === "E" || vCommand.value === "e") {
+                  btnEast();
+                 }
+                else if (vCommand.value === "HELP" || vCommand.value === "help") {
+                  help();
+                 }
+				else if (vCommand.value.toLowerCase() === "take") {
+					if (currentloc===5 && lighter_qty===0) {
+						lighter_qty++;
+						displaymsg("You have taken the lighter. \n\n");
+					}
+					else if (currentloc===5 && lighter_qty===1) {
+						displaymsg("You already have a lighter. \n\n");
+					}
+					else if (currentloc===0 && duck_qty===0) {
+						duck_qty++;
+						displaymsg("You have taken the plastic duck. \n\n");
+					}
+					else if (currentloc===3 && pizza_qty===0) {
+						pizza_qty++;
+						displaymsg("You have taken the delicious pizza!");
+					}
+					else {
+						displaymsg("");
+					}
+					}
+				else if (vCommand.value.toLowerCase() === "inventory") {
+					var target = document.getElementById("tamain");
+					target.value = "INVENTORY: \n" + lighter_name + ": " + lighter_qty + "\n" + duck_name + ": " + duck_qty + "\n" + pizza_name + ": " + pizza_qty + "\n\n" + target.value;
+				}
+				}
+                else {
+                  displaymsg("Please enter a valid command! (press HELP to see the commands) \n\n");
+                }
+             vCommand.value = "";
+             }
+                         
+             
+             function loc_msg() {
+              var msgmsg = "";
+              switch (currentloc) {
+                case 0: 
+					if(duck_qty != 0) {
+						msgmsg="0.You are in the bathroom";
+					}
+					else {
+						msgmsg="0.You are in your bathroom. There is a rubber duck in the bathtub.";
+                    }
+					break;
+                case 1: msgmsg="1.You are in your bedroom";
+                        break;
+                case 2: msgmsg="2.You are in the dining room";
+                        break;
+				case 3: 
+					if(pizza_qty != 0) {
+						msgmsg="3.You are in the kitchen.";
+					}
+					else {
+						msgmsg="3.You are in the kitchen. There is still pizza from yesterday night...";
+                    }
+						break;
+                case 4: msgmsg="4.You found Leo! Now it can take its bath. \n\nCongratulations!\n\n";
+                        break;
+                case 5:
+					if(lighter_qty != 0){
+						msgmsg="5.You just feel a little breeze on your veranda.";
+                    }
+					else{
+						msgmsg="5.You just feel a little breeze on your veranda. There is a lighter on the floor.";
+					}
+					break;
+                case 6: msgmsg="6.You went in your basement, no lights and no cat here";
+                        break;
+                case 7: msgmsg="7.You are in your garden, nothing to do there.";
+                        break;
+                case 8: msgmsg="8.You are standing in your garage, your car is still as dirty as last week.";
+                        break;
+                case 9: msgmsg="9..You are on the roof, imagine if you actualy had a real one...";
+                        break;
+                default: msgmsg="You cannot go this way"
+               }
+               displaymsg(msgmsg);
+            }
+            
+           
+
+           
+      </script>
+   </head>
+   <body>
+       <h1> The Chase For The Bathtub</h1>
+       <br>
+       
+       <textarea rows="10" cols="40" id="tamain"> </textarea>
+      
+       <br>
+              
+       <input type="button"
+              id = "North"
+              value="North"
+              onclick="btnNorth();" >
+              
+       
+        
+       <input type="button"
+              value="South"
+              onclick="btnSouth();" >
+                    
+           
+              
+       <input type="button"
+              value="West"
+              onclick="btnWest();" >
+              
+       <input type="button"
+              value="East"
+              onclick="btnEast();" >       
+              
+       <br>
+       <br>
+       
+       <input type="text"
+               id="txt_Command"
+               value=""
+               name="txt_Command" >
+               
+       <input type="button"
+              id="Enter"
+              value="Enter Command"
+              onclick="btn_Enterclick();" >
+       
+       <br>
+       Points:
+       <input type="text"
+              id="txt_Points"
+              name="txt_Points"
+              value="">
+       <br>      
+       <iframe src="https://kjkl1a.by3301.livefilestore.com/y2psgVJVycYeGl7zvqeVLToAxVEP1K3kGzX81dT0ILYmnPWZ_6JN2RLQAbTzJvyyF35mv1upQXRCdyEeE5o6UD8rN5WawVv1xOmk-UG1RHsfbE/map+1.jpg" width="561" height="475" frameborder="0" scrolling="no"></iframe>
+       
+       <br> 
+       Contact me at:
+       <i><a href="mailto:Celestin.Masson1@marist.edu"> Celestin.Masson1@marist.edu </a></i>
+       if you have any problem.
+       <br>
+
+   </body>
+   <script type="text/javascript" src="locations.js"></script>
+</html>
