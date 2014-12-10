@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<!--Celestin L. MASSON
+    Introduction to Programming
+    Project 6 - Game v1.0 -->
+	<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <style>
+		h1 {font-family: "Broadway"; color: black;}
+		p {color: black; clear: both;}
+		.btn {
+		  -webkit-border-radius: 28;
+		  -moz-border-radius: 28;
+		  border-radius: 10px;
+		  text-shadow: 1px 1px 3px #666666;
+		  font-family: Arial;
+		  color: #ffffff;
+		  font-size: 16px;
+		  background: #7b99ad;
+		  padding: 5px 10px 5px 10px;
+		  text-decoration: none;
+		}
+
+		.btn:hover {
+		  background: #30739c;
+		  text-decoration: none;
+		}
+		
+		.txtarea {
+			border: 1px solid #765942;
+			border-radius: 10px;
+			height: 250px;
+			width: 350px;
+			font-family: "Courier New";
+		}
+	</style>
+	</head>
+	<body onload="init()" style="background-image: url(background-bathtub.jpg); background-size: 65%; background-repeat: repeat-x;">
+		<h1 style="padding-left: 25px; padding-top: 25px; text-align: center;">The chase for the <span style="color: #1E90FF;">bathtub</span></h1>
+		<br>
+		<div style="float: left; padding-left: 300px;">
+			<textarea class="txtarea" rows="10" cols="40" id="tamain"> </textarea>
+			<br> 
+			<br>
+			<div style="text-align: center;">
+			<input 	class="btn"
+					type="button"
+					id = "North"
+					value="North"
+					onclick="btnNorth();">     
+			<input	class="btn"
+					type="button"
+					value="East"
+					onclick="btnEast();">					
+			<input 	class="btn"
+					type="button"
+					value="South"
+					onclick="btnSouth();">  
+			<input	class="btn"
+					type="button"
+					value="West"
+					onclick="btnWest();">
+			<br>
+			<br>
+			<input	type="text"
+					id="txt_Command"
+					value=""
+					name="txt_Command" >
+				   
+			<input 	type="button"
+					id="Enter"
+					value="Enter Command"
+					onclick="btn_Enterclick();">
+			<br>
+			<br>
+			Points:
+			<input type="text"
+				  id="txt_Points"
+				  name="txt_Points"
+				  value="">
+			<br>
+			</div>
+		</div>
+		<div style="float: right; padding-right: 300px;">
+		<iframe src="map.jpg" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+		</div>
+		<div style="position: absolute; bottom: 10px; text-align: center;">
+			Contact me at:
+			<i><a href="mailto:Celestin.Masson1@marist.edu">Celestin.Masson1@marist.edu </a></i>
+			if you have any problem.
+		</div>
+   </body>
+   <script type="text/javascript" src="locations.js"></script>
+   <script type="text/javascript" src="myscript.js"></script>
+</html>
